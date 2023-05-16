@@ -28,3 +28,52 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: time story 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_time
+  - action: action_time
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: time story 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_time
+    entities:
+    - GPE: Dortmund
+  - action: action_time
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: time story 3
+  steps:
+  - intent: ask_time
+    entities:
+    - GPE: Dortmund
+  - action: action_time
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: weather story 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_weather
+    entities:
+    - GPE: Dortmund
+  - action: action_weather
+  - action: utter_did_that_help
+  - intent: affirm
+
+- story: weather story 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_weather
+  - action: action_weather
+  - action: utter_did_that_help
+  - intent: affirm

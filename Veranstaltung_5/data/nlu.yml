@@ -1,5 +1,4 @@
 version: "3.1"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,7 +15,7 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
+    - Hi
 - intent: goodbye
   examples: |
     - cu
@@ -29,7 +28,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -38,7 +36,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -48,7 +45,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -65,7 +61,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -82,14 +77,12 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-    
 - intent: ask_time
   examples: |
     - what time is it?
@@ -97,7 +90,7 @@ nlu:
     - what time is it in [New York](GPE)?
     - tell me the time in [Berlin](GPE)
     - am I late?
-    
+    - What time is it?
 - intent: ask_weather
   examples: |
     - what is the weather like?
@@ -105,7 +98,7 @@ nlu:
     - do I need an umbrella in [London](GPE)?
     - do I need a coat in [Stockholm](GPE)?
     - will the sun shine [tomorrow](TIME)?
-    
+    - What is the weather like in Dortmund?
 - intent: joke
   examples: |
     - please tell me a joke

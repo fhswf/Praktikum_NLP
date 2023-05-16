@@ -89,3 +89,27 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    
+- intent: ask_time
+  examples: |
+    - what time is it?
+    - please tell me the time!
+    - what time is it in [New York](GPE)?
+    - tell me the time in [Berlin](GPE)
+    - am I late?
+    
+- intent: ask_weather
+  examples: |
+    - what is the weather like?
+    - what is the weather like in [Mexico](GPE)?
+    - do I need an umbrella in [London](GPE)?
+    - do I need a coat in [Stockholm](GPE)?
+    - will the sun shine [tomorrow](TIME)?
+    
+- intent: joke
+  examples: |
+    - please tell me a joke
+    - tell me something funny
+    - can you make me laugh?
+    - I need something funny
+    - do you know a joke?

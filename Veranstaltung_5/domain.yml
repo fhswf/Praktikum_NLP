@@ -8,7 +8,18 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - ask_time
+  - ask_weather
+  - joke
 
+entities:
+  - GPE
+  
+actions:
+  - action_time
+  - action_weather
+  - action_joke
+  
 responses:
   utter_greet:
   - text: "Hey! How are you?"

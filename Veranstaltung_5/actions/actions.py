@@ -12,12 +12,14 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from datetime import datetime
-import pytz
 from geopy.geocoders import Nominatim
 from timezonefinder import TimezoneFinder
+from pyowm.owm import OWM
+import pytz
+import requests
 
 
-class ActionHelloWorld(Action):
+class ActionTime(Action):
     def name(self) -> Text:
         return "action_time"
     
@@ -52,3 +54,46 @@ class ActionHelloWorld(Action):
         
         dispatcher.utter_message(text=time)
         return []
+
+    
+class ActionWeather(Action):
+    def __init__(self):
+        Action.__init__(self)
+        self.owm = OWM('70cc3025706fcdbd8a7631b8104b8340')
+        self.mgr = self.owm.weather_manager()
+        
+    def name(self) -> Text:
+        return "action_weather"
+
+    def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker,
+             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        print(tracker.latest_message['entities'])
+        cities = list(map(lambda x: x['value'], 
+                      filter(lambda x: x['entity'] == 'GPE', tracker.latest_message['entities'])))
+        city = cities[0] if cities else "Iserlohn"
+        
+        
+        observation = self.mgr.weather_at_place(city)
+        temperature = observation.weather.temperature('celsius')['temp']
+        status = observation.weather.detailed_status
+        icon = observation.weather.weather_icon_url()
+        print(observation.weather, dir(observation.weather))
+        
+        dispatcher.utter_message(text=f"in {city}, it is {temperature}° and {status}", image=icon)
+        return []
+    
+class ActionJoke(Action):
+    
+    def name(self) -> Text:
+        return "action_joke"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker,
+             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        url = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single"
+        response = requests.get(url)
+        
+        dispatcher.utter_message(text=f"'{response.json()['joke']}'")
+        return []        

@@ -17,9 +17,9 @@ actions:
 - utter_greet
 - utter_goodbye
 - utter_happy
+- action_joke
 - action_time
 - action_weather
-- action_joke
 responses:
   utter_greet:
   - text: Hey! How are you?

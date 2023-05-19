@@ -77,3 +77,8 @@ stories:
   - action: action_weather
   - action: utter_did_that_help
   - intent: affirm
+
+- story: joke story 1
+  steps:
+  - intent: joke
+  - action: action_joke
